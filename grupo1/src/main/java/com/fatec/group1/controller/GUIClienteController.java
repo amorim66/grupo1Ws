@@ -24,6 +24,7 @@ public class GUIClienteController {
 	@Autowired
 	MantemCliente servico;
 
+	// consulta todos os clientes
 	@GetMapping("/clientes")
 	public ModelAndView retornaFormDeConsultaTodosClientes() {
 		ModelAndView mv = new ModelAndView("consultarCliente");
@@ -54,6 +55,7 @@ public class GUIClienteController {
 		return mv; // addObject adiciona objetos para view
 	}
 
+	// exclui cliente
 	@GetMapping("/clientes/id/{id}")
 	public ModelAndView excluirNoFormDeConsultaCliente(@PathVariable("id") Long id) {
 		servico.delete(id);
@@ -63,6 +65,7 @@ public class GUIClienteController {
 		return modelAndView;
 	}
 
+	// cadastra o cliente
 	@PostMapping("/clientes")
 	public ModelAndView save(@Valid Cliente cliente, BindingResult result) {
 		ModelAndView mv = new ModelAndView("consultarCliente");
